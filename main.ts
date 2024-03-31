@@ -7,7 +7,6 @@ let myPin = 659;
 let pin = await inquirer.prompt([
   { name: "userPin", message: "Enter your 3 digits pin", type: "number" },
 ]);
-
 if (myPin == pin.userPin) {
   console.log("Login Successful");
   let operation = await inquirer.prompt([
@@ -18,7 +17,7 @@ if (myPin == pin.userPin) {
       choices: ["Withdraw", "Deposit", "Balance Check"],
     },
   ]);
-  if (operation.userOperation == "Withdraw") {
+  if (operation.userOperation === "Withdraw") {
     let withdrawAmount = await inquirer.prompt([
       {
         name: "userWithdraw",
@@ -29,7 +28,7 @@ if (myPin == pin.userPin) {
     myBalance -= withdrawAmount.userWithdraw;
     console.log("Withdraw Successful");
     console.log("Your current balance is: ", myBalance);
-  } else if (operation.userOperation == "Deposit") {
+  } else if (operation.userOperation === "Deposit") {
     let depositAmount = await inquirer.prompt([
       {
         name: "userDeposit",
